@@ -3,7 +3,36 @@
   <a class="btn btn-primary" [class.active]="click2" (click)="onClick()">Link</a>
   <a class="btn btn-primary">Link</a>
 </div> -->
-<h1>Imágen del día</h1>
-<p>Disfruta de las imagenes tomadas diariamente por la NASA desde 1995 hasta la actualidad.</p>
+<header>
+  <h1>Imágen del día</h1>
+  <p>Disfruta de las imagenes tomadas diariamente por la NASA desde 1995 hasta la actualidad.</p>
+</header>
 
-<h2>Elije un modo de selección</h2>
+<main>
+  <h2>Elije un modo de selección</h2>
+
+  <!-- Mode controls -->
+  <section class="controls--container">
+    <a class="btn btn-primary" [class.active]="selectedMode=='A specific day'" (click)="changeMode('A specific day')">Un día específico</a>
+    <a class="btn btn-primary" [class.active]="selectedMode=='A days range'" (click)="changeMode('A days range')">Un rango de días</a>
+    <a class="btn btn-primary" [class.active]="selectedMode=='Randoms immages'" (click)="changeMode('Randoms immages')">Imágenes aleatorias</a>
+  </section>
+
+  <!-- Modes -->
+  <section class="inputs--container">
+    <section *ngIf="selectedMode == 'A specific day'">
+      <input type="date" placeholder="yyyy-mm-dd" [(ngModel)]="date1" ngbDatepicker #d="ngbDatepicker">
+    </section>
+
+    <section *ngIf="selectedMode == 'A days range'">
+      <input type="date" placeholder="yyyy-mm-dd" [(ngModel)]="date2" ngbDatepicker #d="ngbDatepicker">
+      <input type="date" placeholder="yyyy-mm-dd" [(ngModel)]="date3" ngbDatepicker #d="ngbDatepicker">
+    </section>
+
+    <section *ngIf="selectedMode == 'Randoms immages'">
+      <input type="number" placeholder="Cantidad de imagenes" [(ngModel)]="quantity">
+    </section>
+  </section>
+
+  <button class="btn btn-secondary">Hacer búsqueda</button>
+</main>

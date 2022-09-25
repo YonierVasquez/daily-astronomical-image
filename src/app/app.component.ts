@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
@@ -6,11 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'daily-astronomical-image';
+  selectedMode = 'A specific day'
 
-  click2 = false;
+  // For a specific day
+  date1!: NgbDateStruct;
 
-  onClick() {
-    this.click2 = !this.click2;
+  // For a days range
+  date2!: NgbDateStruct;
+  date3!: NgbDateStruct;
+
+  // For random images
+  quantity!: number;
+
+  changeMode(mode: string) {
+    this.selectedMode = mode;
   }
 }
