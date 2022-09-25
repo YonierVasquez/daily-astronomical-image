@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'daily-astronomical-image';
+
+  click2 = false;
+
+  onClick() {
+    this.click2 = !this.click2;
+  }
 }
